@@ -3,7 +3,7 @@ feign:
     enabled: true
 
 ribbon:
-  ReadTimeout: 50000    #等待响应超时时间，默认值5000
+  ReadTimeout: 3000    #等待响应超时时间，默认值5000
   ConnectTimeout: 2000  #请求连接的超时时间，默认值2000
   MaxAutoRetries: 0     #对当前实例的重试次数，默认0
   MaxAutoRetriesNextServer: 0 #对切换实例的重试次数，默认1
