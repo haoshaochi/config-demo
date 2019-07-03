@@ -1,0 +1,22 @@
+feign:
+  hystrix:
+    enabled: true
+
+ribbon:
+  ReadTimeout: 50000    #等待响应超时时间，默认值5000
+  ConnectTimeout: 2000  #请求连接的超时时间，默认值2000
+  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
+  MaxAutoRetriesNextServer: 0 #对切换实例的重试次数，默认1
+
+
+hystrix:
+  command:
+    default:  #default全局有效，service id指定应用有效
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 50000  #断路器超时时间，默认1000ms
+      circuitBreaker:
+        requestVolumeThreshold: 10 # 请求次数，请求至少达到多少次，才计算失败百分比
+        errorThresholdPercentage: 80 # 错误百分比，默认值50%，超过该值打开断路器
+        sleepWindowInMilliseconds: 10000 # 半开试探休眠时间，默认值5000ms。当熔断器开启后，经过多长时间会尝试放过去一部分流量进行试探，确定服务是否恢复。
